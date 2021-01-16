@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS vehiculos;
 CREATE TABLE tipo_linea(
     id_linea INT(5) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     `desc_linea` VARCHAR(255) NULL,
-    id_marca INT(5) UNSIGNED,
+    id_marca INT(5) UNSIGNED ,
     activo ENUM('S','N') NOT NULL
 ) ENGINE=INNODB;
 
@@ -19,7 +19,7 @@ CREATE TABLE tipo_marca(
 ) ENGINE=INNODB;
 
 CREATE TABLE vehiculos(
-    nro_placa INT(5) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nro_placa VARCHAR(10) PRIMARY KEY,
     id_linea INT(5) UNSIGNED,
     modelo INT(5) UNSIGNED,
     fecha_ven_seguro DATE NULL, -- Puede que el vehiculo no cuente con un seguro.

@@ -10,5 +10,5 @@ const connection_database = mysql.createConnection({
 })
 
 module.exports = {
-    connection_mysql = connection_database
+    connection_mysql: connection_database
 }

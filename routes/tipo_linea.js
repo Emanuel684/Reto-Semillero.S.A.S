@@ -3,45 +3,21 @@ const { connection_mysql } = require('./../config/database');
 const tipo_linea = Router();
 
 
-router.post('/actor', async (req, res) => {
+tipo_linea.post('/new-tipo_linea', async (req, res) => {
     try {
         const {
-            documento,
-            tipo_documento,
-            nombres,
-            apellidos,
-            contrasena,
-            correo,
-            telefono_celular,
-            numero_expediente,
-            genero,
-            fecha_nacimiento,
-            estado_actor_id,
-            institucion_id,
-            tipo_actor_id,
-            fecha_creacion,
-            fecha_actualizacion
+            desc_linea,
+            id_marca,
+            activo
         } = req.body
-        const r = await cnn_mysql.promise().execute(`INSERT INTO actores(documento, tipo_documento, nombres, apellidos, contrasena, correo, telefono_celular, numero_expediente, genero, fecha_nacimiento, estado_actor_id, institucion_id, tipo_actor_id, fecha_creacion,fecha_actualizacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [documento, tipo_documento, nombres, apellidos, contrasena, correo, telefono_celular, numero_expediente, genero, fecha_nacimiento, estado_actor_id, institucion_id, tipo_actor_id, fecha_creacion, fecha_actualizacion])
+        const r = await connection_mysql.promise().execute(`INSERT INTO tipo_linea(desc_linea,id_marca,activo) VALUES (?, ?, ?)`, [desc_linea,id_marca,activo])
 
         if (r.affectedRows > 0) {
             res.json({
-                id: r.insertId,
-                documento: documento,
-                tipo_documento: tipo_documento,
-                nombres: nombres,
-                apellidos: apellidos,
-                contrasena: contrasena,
-                correo: correo,
-                telefono_celular: telefono_celular,
-                numero_expediente: numero_expediente,
-                genero: genero,
-                fecha_nacimiento: fecha_nacimiento,
-                estado_actor_id: estado_actor_id,
-                institucion_id: institucion_id,
-                tipo_actor_id: tipo_actor_id,
-                fecha_creacion: fecha_creacion,
-                fecha_actualizacion: fecha_actualizacion
+                id_linea: r.insertId,
+                desc_linea: desc_linea,
+                id_marca: id_marca,
+                activo: activo
             })
         } else {
             res.json({})

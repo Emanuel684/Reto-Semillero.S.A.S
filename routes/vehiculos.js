@@ -2,45 +2,26 @@ const { Router } =  require('express');
 const { connection_mysql } = require('./../config/database');
 const vehiculos = Router();
 
-router.post('/actor', async (req, res) => {
+vehiculos.post('/actor', async (req, res) => {
     try {
         const {
-            documento,
-            tipo_documento,
-            nombres,
-            apellidos,
-            contrasena,
-            correo,
-            telefono_celular,
-            numero_expediente,
-            genero,
-            fecha_nacimiento,
-            estado_actor_id,
-            institucion_id,
-            tipo_actor_id,
-            fecha_creacion,
-            fecha_actualizacion
+            nro_placa,
+            id_linea,
+            modelo,
+            fecha_ven_seguro,
+            fecha_ven_tecnomecanica,
+            fecha_ven_contratodo
         } = req.body
-        const r = await cnn_mysql.promise().execute(`INSERT INTO actores(documento, tipo_documento, nombres, apellidos, contrasena, correo, telefono_celular, numero_expediente, genero, fecha_nacimiento, estado_actor_id, institucion_id, tipo_actor_id, fecha_creacion,fecha_actualizacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [documento, tipo_documento, nombres, apellidos, contrasena, correo, telefono_celular, numero_expediente, genero, fecha_nacimiento, estado_actor_id, institucion_id, tipo_actor_id, fecha_creacion, fecha_actualizacion])
+        const r = await connection_mysql.promise().execute(`INSERT INTO vehiculos(nro_placa,id_linea,modelo,fecha_ven_seguro,fecha_ven_tecnomecanica,fecha_ven_contratodo) VALUES (?,?,?,?,?,?)`, [nro_placa,id_linea,modelo,fecha_ven_seguro,fecha_ven_tecnomecanica,fecha_ven_contratodo])
 
         if (r.affectedRows > 0) {
             res.json({
-                id: r.insertId,
-                documento: documento,
-                tipo_documento: tipo_documento,
-                nombres: nombres,
-                apellidos: apellidos,
-                contrasena: contrasena,
-                correo: correo,
-                telefono_celular: telefono_celular,
-                numero_expediente: numero_expediente,
-                genero: genero,
-                fecha_nacimiento: fecha_nacimiento,
-                estado_actor_id: estado_actor_id,
-                institucion_id: institucion_id,
-                tipo_actor_id: tipo_actor_id,
-                fecha_creacion: fecha_creacion,
-                fecha_actualizacion: fecha_actualizacion
+                nro_placa: nro_placa,
+                id_linea: id_linea,
+                modelo: modelo,
+                fecha_ven_seguro: fecha_ven_seguro,
+                fecha_ven_tecnomecanica: fecha_ven_tecnomecanica,
+                fecha_ven_contratodo: fecha_ven_tecnomecanica
             })
         } else {
             res.json({})
