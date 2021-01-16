@@ -29,7 +29,7 @@ CREATE TABLE vehiculos(
 
 CREATE TABLE modelo(
     id_modelo INT(5) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    nom_modelo VARCHAR(255) NOT NULL
+    nom_modelo INT(10) NOT NULL
 ) ENGINE=INNODB;
 
 

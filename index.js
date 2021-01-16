@@ -5,6 +5,7 @@ const app = express();
 const vehiculos = require('./routes/vehiculos');
 const tipo_linea = require('./routes/tipo_linea');
 const tipo_marca = require('./routes/tipo_marca');
+const modelo = require('./routes/modelo');
 
 require('dotenv').config();
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 app.use('/vehiculos', vehiculos);
 app.use('/tipo_marca', tipo_marca);
 app.use('/tipo_linea', tipo_linea);
+app.use('/modelo', modelo);
 
 // Fin routes
 
