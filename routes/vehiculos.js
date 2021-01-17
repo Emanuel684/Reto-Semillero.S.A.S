@@ -49,7 +49,7 @@ vehiculos.get('/consulta_nro-placa_modelo_desc-linea_desc-marca', (req,res)=>{
 });
 // Fin consulta única que tenga las siguientes columnas:NRO_PLACA, MODELO, DESC_LINEA, DESC_MARCA; traertodos los registros que coincidan en todas las tablas y que se encuentren en estado S. 
 
-
+// PRESENTA PROBLEMAS
 // Consulta única que tenga las siguientes columnas:NRO_PLACA, MODELO, DESC_LINEA, DESC_MARCA, traertodos los registros que coincidan en todas las tablas.
 vehiculos.get('/consulta_nro-placa_modelo_desc-linea_desc-marca', (req,res)=>{
   connection_mysql.query(`SELECT vehiculos.nro_placa, modelo.nom_modelo, tipo_linea.desc_linea, tipo_marca.desc_marca

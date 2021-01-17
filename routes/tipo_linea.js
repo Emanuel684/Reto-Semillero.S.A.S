@@ -65,7 +65,7 @@ tipo_linea.post("/new-tipo_linea", async (req, res) => {
 });
 // Fin crear un nuevo registro en la table de tipo_linea
 
-// Consulta que contenga DESC_MARCA,DESC_LINEA y cantidad, para saber cuántas líneas repetidaspor marca están almacenadas.
+// Consulta que contenga DESC_MARCA,DESC_LINEA y cantidad, para saber cuántas líneas repetidas por marca están almacenadas.
 tipo_linea.get("/desc_marca-desc_linea-cantidad", (req, res) => {
   connection_mysql.query(
     `SELECT tipo_marca.desc_marca, tipo_linea.desc_linea, COUNT(*) AS cantidad 
