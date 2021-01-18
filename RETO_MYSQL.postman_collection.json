@@ -1,0 +1,564 @@
+{
+	"info": {
+		"_postman_id": "822d9390-aa5e-4065-8ef2-b0fa7b8861a2",
+		"name": "RETO_MYSQL",
+		"description": "Esta es la collection del reto sobre mysql de la clase de bases de datos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST_TIPO_MARCA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"desc_marca\": \"Audi\",\r\n   \"activo\": \"N\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4040/tipo_marca/new-tipo_marca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_marca",
+						"new-tipo_marca"
+					]
+				},
+				"description": "Este es le post para crear registros en la tabla tipo_marca."
+			},
+			"response": []
+		},
+		{
+			"name": "POST_TIPO_LINEA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"desc_linea\": \"Envio\",\r\n    \"id_marca\": 1,\r\n    \"activo\": \"N\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4040/tipo_linea/new-tipo_linea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_linea",
+						"new-tipo_linea"
+					]
+				},
+				"description": "Esta es la peticion para crear un registro en la tabla tipo_linea."
+			},
+			"response": []
+		},
+		{
+			"name": "POST_VEHICULO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nro_placa\": \"8852 KBO\",\r\n    \"id_linea\": 9,\r\n    \"modelo\": 1,\r\n    \"fecha_ven_seguro\": \"2022-01-07T05:00:00.000Z\",\r\n    \"fecha_ven_tecnomecanica\": \"2021-02-19T05:00:00.000Z\",\r\n    \"fecha_ven_contratodo\": \"2021-10-19T05:00:00.000Z\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/new-vehiculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"new-vehiculo"
+					]
+				},
+				"description": "Este es el servico para registrar un vehiculo en la tabla de vehiculos."
+			},
+			"response": []
+		},
+		{
+			"name": "POST_MODELO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"nom_modelo\": 2014\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4040/modelo/new-modelo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"modelo",
+						"new-modelo"
+					]
+				},
+				"description": "Este es el post para realizar registros en la table modelo."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_TIPO_MARCA",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_marca/delete-tipo_marca/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_marca",
+						"delete-tipo_marca",
+						"7"
+					]
+				},
+				"description": "Esta es la peticion de eliminar un registro de la tabla tipo_marca de la base de datos semilleroSAS."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_VEHICULOS_RANGO_FECHAS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha_minima\": \"2021-03-01\",\r\n    \"fecha_maxima\": \"2022-12-20\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/consulta_rango_fecha",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"consulta_rango_fecha"
+					]
+				},
+				"description": "Esta es la consula en la que se hace un get de los vehiculos que cumplen un rango de fechas de vencimientos del seguro del vehiculo."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_VEHICULOS_RANGO_MODELO",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"modelo_minimo\": \"2019\",\r\n    \"modelo_maximo\": \"2020\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/consulta_rango_modelo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"consulta_rango_modelo"
+					]
+				},
+				"description": "Esta es la peticion donde se piden todos los vehiculos que cumplan un rango de valores de la tabla modelo."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_TIPO_LINEA_CANTIDAD_ACTIVOS_CANTIDAD_INACTIVOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_linea/cantidad_activos-cantidad_inactivos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_linea",
+						"cantidad_activos-cantidad_inactivos"
+					]
+				},
+				"description": "Esta es la peticion para consultar la cantidad de registros activos e inactivos de la tabla tipo_linea."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_TIPO_LINEA_CANTIDAD_REGISTROS_SOLICITUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_linea/cantidad-solicitud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_linea",
+						"cantidad-solicitud"
+					]
+				},
+				"description": "Este es el get de tipo_linea para saber cuantos registros hay en la tabla, y ademas, si cumple con el numero requerido de peticiones o no."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_TIPO_LINEA_DESC_MARCA_DESC_LINEA_CANTIDAD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_linea/desc_marca-desc_linea-cantidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_linea",
+						"desc_marca-desc_linea-cantidad"
+					]
+				},
+				"description": "Esta es la peticion get que contiene los campos desc_marca, desc_linea y cantidad para saber cuantes lineas repetidas por marca estan almacenadas."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_TIPO_MARCA_CANTIDAD_REGISTRO_SOLICITUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_marca/cantidad-solicitud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_marca",
+						"cantidad-solicitud"
+					]
+				},
+				"description": "Esta es la peticion get para consultar la cantidad de registro y si esa cantidad es la requerida o no."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_VEHICULOS_CANTIDAD_REGISTROS_SOLICITUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/cantidad-solicitud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"cantidad-solicitud"
+					]
+				},
+				"description": "Esta es la peticion donde se consulta la cantidad de registros en la tabla vehiculos, y si esta cantidad cumple con los registros necesarios o no."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_VEHICULOS_CONSULTA_NRO_PLACA_MODELO_DESC_LINEA_DESC_MARCA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/consulta_nro-placa_modelo_desc-linea_desc-marca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"consulta_nro-placa_modelo_desc-linea_desc-marca"
+					]
+				},
+				"description": "Esta es la peticion get para consultar los campos nro_placa, modelo, desc_linea, desc_modelo de la base de datos semilleroSAS."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_MODELOS_PROMEDIO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/modelo/prom-modelos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"modelo",
+						"prom-modelos"
+					]
+				},
+				"description": "Esta es la consula get donde se realiza el promedio de todos los registros de la tabla modelos."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_MODELOS_SUMA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/modelo/sum-modelos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"modelo",
+						"sum-modelos"
+					]
+				},
+				"description": "Esta es la peticion donde se consulta la suma de todos lo registro que hacen parte de la tabla modelos de la base de datos."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_MODELOS_MAXIMO_MINIMO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/modelo/modelo-maximo_minimo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"modelo",
+						"modelo-maximo_minimo"
+					]
+				},
+				"description": "Esta es la peticion para consultar el registro maximo y minimo en la tabla de modelos."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_VEHICULOS_CONSULTA_NRO_PLACA_MODELO_DESC_LINEA_DESC_MARCA_ON_S",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/consulta_nro-placa_modelo_desc-linea_desc-marca_on_s",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"consulta_nro-placa_modelo_desc-linea_desc-marca_on_s"
+					]
+				},
+				"description": "Esta es la consulta en la que se piden las columnas: nro_placa, modelo, desc_linea y desc_marca donde el estado sea S tanto en la tabla tipo_linea como en tipo_marca."
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH_TIPO_LINEA_MODIFICAR_ACTIVO",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"activo\": \"S\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4040/tipo_linea/update-activo-tipo_linea/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_linea",
+						"update-activo-tipo_linea",
+						"20"
+					]
+				},
+				"description": "Esta es la peticion para modificar el campo activo de alguno de los registros de la tabla tipo_linea."
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH_TIPO_MARCA_UPDATE_ACTIVO",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"activo\": \"S\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4040/tipo_marca/update-activo-tipo_marca/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_marca",
+						"update-activo-tipo_marca",
+						"5"
+					]
+				},
+				"description": "Esta es la peticion para modificar el campo actido de la tabla tipo_marca."
+			},
+			"response": []
+		},
+		{
+			"name": "GET-VEHICULOS-TODOS-NO-NULL-SOLICITUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/vehiculos/all-vehiculos-solicitud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"vehiculos",
+						"all-vehiculos-solicitud"
+					]
+				},
+				"description": "Esta es la peticion get donde se solicitan todos los registros de vehiculos que no tengan ningun campo null y ademas con el formato de la fecha distinto."
+			},
+			"response": []
+		},
+		{
+			"name": "GET-TIPO_MARCA-NOT-NULL-SOLICITUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_marca/all-tipo_marca-solicitud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_marca",
+						"all-tipo_marca-solicitud"
+					]
+				},
+				"description": "Esta es la peticion para traer todos los registros de la tabla tipo_marca que no posean campos nulos y ademas que el campo activo se muestr de manera diferente."
+			},
+			"response": []
+		},
+		{
+			"name": "GET_TIPO_LINEA_NOT_NULL_SOLICITUD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4040/tipo_linea/all-tipo_linea-solicitud",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4040",
+					"path": [
+						"tipo_linea",
+						"all-tipo_linea-solicitud"
+					]
+				},
+				"description": "Esta es la peticion donde se consultan todos los registros de la tabla tipo_linea que no posean campos nulos y ademas cambiando el formato del campo activo."
+			},
+			"response": []
+		}
+	]
+}
