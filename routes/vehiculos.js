@@ -194,4 +194,56 @@ vehiculos.post("/new-vehiculo", async (req, res) => {
 });
 // Fin creacion de nuevo vehiculo
 
+// INNER JOIN
+// Consulta que una las tablas VEHICULOS, TIPO_LINEA y TIPO_MARCA mediante INNER JOIN y LEFT JOIN, en esta consulta se deben proyectar los campos NRO_PLACA,MODELO, DESC_LINEA y DESC_MARCA. 
+vehiculos.get("/consulta_nro-placa_modelo_desc-linea_desc-marca-inner-join",
+  (req, res) => {
+    connection_mysql.query(
+      `SELECT vehiculos.nro_placa, modelo.nom_modelo, tipo_linea.desc_linea, tipo_marca.desc_marca
+      FROM vehiculos
+      INNER JOIN modelo 
+      ON vehiculos.modelo = modelo.id_modelo
+      INNER JOIN tipo_linea
+      ON vehiculos.id_linea = tipo_linea.id_linea
+      INNER JOIN tipo_marca
+      ON tipo_linea.id_marca = tipo_marca.id_marca;`,
+      (err, rows, fields) => {
+        if (!err) {
+          res.json(rows);
+        } else {
+          console.log(err);
+        }
+      }
+    );
+  }
+);
+// Fin Consulta que una las tablas VEHICULOS, TIPO_LINEA y TIPO_MARCA mediante INNER JOIN y LEFT JOIN, en esta consulta se deben proyectar los campos NRO_PLACA,MODELO, DESC_LINEA y DESC_MARCA.
+// FIN INNER JOIN
+
+// LEFT JOIN
+// Consulta que una las tablas VEHICULOS, TIPO_LINEA y TIPO_MARCA mediante INNER JOIN y LEFT JOIN, en esta consulta se deben proyectar los campos NRO_PLACA,MODELO, DESC_LINEA y DESC_MARCA. 
+vehiculos.get("/consulta_nro-placa_modelo_desc-linea_desc-marca-left-join",
+  (req, res) => {
+    connection_mysql.query(
+      `SELECT vehiculos.nro_placa, modelo.nom_modelo, tipo_linea.desc_linea, tipo_marca.desc_marca
+      FROM vehiculos
+      LEFT JOIN modelo 
+      ON vehiculos.modelo = modelo.id_modelo
+      LEFT JOIN tipo_linea
+      ON vehiculos.id_linea = tipo_linea.id_linea
+      LEFT JOIN tipo_marca
+      ON tipo_linea.id_marca = tipo_marca.id_marca;`,
+      (err, rows, fields) => {
+        if (!err) {
+          res.json(rows);
+        } else {
+          console.log(err);
+        }
+      }
+    );
+  }
+);
+// Fin Consulta que una las tablas VEHICULOS, TIPO_LINEA y TIPO_MARCA mediante INNER JOIN y LEFT JOIN, en esta consulta se deben proyectar los campos NRO_PLACA,MODELO, DESC_LINEA y DESC_MARCA.
+// FIN LEFT JOIN
+
 module.exports = vehiculos;
